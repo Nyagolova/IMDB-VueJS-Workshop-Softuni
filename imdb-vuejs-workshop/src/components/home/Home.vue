@@ -5,18 +5,10 @@
           <p>or  <a href="/register">register</a> if you haven't</p> -->
       <h1>All movies</h1>
       <ul class="movies">
-        <li class="movie">
-          <h2>Titanic (1997)</h2>
+        <li class="movie" v-for="movie in movies" :key="movie._id"> 
+          <h2>{{movie.title}}</h2>
           <img
-            src="https://m.media-amazon.com/images/M/MV5BMDdmZGU3NDQtY2E5My00ZTliLWIzOTUtMTY4ZGI1YjdiNjk3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_UX182_CR0,0,182,268_AL_.jpg" />
-          <span>
-            <button>Show Details</button>
-          </span>
-        </li>
-        <li class="movie">
-          <h2>Avatar (2009)</h2>
-          <img
-            src="https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_UX182_CR0,0,182,268_AL_.jpg" />
+            :src="movie.poster" />
           <span>
             <button>Show Details</button>
           </span>
@@ -26,8 +18,11 @@
 </template>
 
 <script>
+import {movieService} from '@/services/movieServices'
+
 export default {
 
+  mixins: [movieService]
 }
 </script>
 

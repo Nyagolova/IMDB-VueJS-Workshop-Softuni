@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import config from '@/config/config'
-import axios from 'axios'
+import { authenticate } from '@/services/authServices'
+
 
 import {
   required,
@@ -32,6 +32,7 @@ export default {
       email: '',
     }
   },
+  mixins: [ authenticate ],
   validations: {
       username: {
         required,
@@ -49,24 +50,9 @@ export default {
   },
   methods: {
     onRegisterClick() {
-      const authString =   btoa(`${config.appKey}:${config.appSecret}`)
-      
-      axios.post(`https://baas.kinvey.com/user/${config.appKey}/`,
-        {
-          usernmae: this.username,
-          password: this.password
-        },
-        {
-          headers: {
-            'Authorization' : `Basic ${authString}`,
-            'Content-Type': 'application/json'
-          }
-        }
-      ).then(res => {
-        console.log(res)
-      })
-
-    }
+      this.register(this.username, this.password)
+        .then(res => this.$router.push('/')) 
+     }
   }
 }
 </script>
