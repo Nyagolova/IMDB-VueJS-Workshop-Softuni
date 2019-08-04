@@ -6,8 +6,8 @@
           <a href="/movie/create">Create</a>
           <a href="#">Welcome testuser!</a>
           <a href="#">Logout</a>
-          <!-- <a href="/register">Register</a>
-              <a href="/login">Login</a> -->
+          <a href="/register">Register</a>
+          <a href="/login">Login</a>
         </span>
       </div>
     </header>
